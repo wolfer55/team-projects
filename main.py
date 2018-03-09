@@ -22,7 +22,15 @@ class Application:
 		self.chunk = 1024
 
 	def on_play_button_click(self):
-		print("hello this wokrs")
+		self.aud = pyaudio.PyAudio()
+		if self.canRun:
+			self.stream = self.aud.open(format = self.aud.get_format_from_width(self.file_imported.getsampwidth()),channels = self.file_imported.getnchannels(),rate = self.file_imported.getframerate(), output = True)
+
+			self.data = self.file_imported.readframes(self.chunk)
+
+			while self.data:
+				self.stream.write(self.data)
+				self.data = self.file_imported.readframes(self.chunk)
 
 	def on_ff_button_click(self):
 		print("hello this wokrs")
