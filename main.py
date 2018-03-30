@@ -46,7 +46,7 @@ class Application:
 		else:	
 			if self.play_pause:
 				mixer.music.unpause()
-				self.play_pause=False
+				self.play_unpause=False
 			else:
 				mixer.music.pause()
 				self.play_pause=True
